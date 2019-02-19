@@ -62,12 +62,12 @@ unzip XS_PYTHON00_1-70003433.ZIP -d sap_dependencies
 
 Clone this repo at the same directory level as the sap_dependencies folder.
 ```
-git clone https://github.com/alundesap/mta-python-securestore.git
+git clone https://github.com/SAP/hana-python-securestore.git
 ```
 
 Change into the project folder.
 ```
-cd mta-python-securestore
+cd hana-python-securestore
 ```
 
 If pip doesn't support the download sub-command you may need to update it.
@@ -100,7 +100,7 @@ xs deploy target/python-securestore_xsa.mtar --use-namespaces
 
 Discover the deployed application's URL and open it in a browser.
 ```
-xs app mta-python-securestore.app --urls
+xs app hana-python-securestore.app --urls
 ```
 
 ## Configuration
