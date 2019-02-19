@@ -1,0 +1,46 @@
+#!/bin/bash
+#echo ""
+xsorcf=$1
+#org="HANAExpress"
+org="LCFX"
+space="DEV"
+path=$2
+proj="python-dev-env"
+app=$proj"_"$path
+host=$app"-"$path
+dowait=""
+doexport1=""
+doexport2=""
+if [ "$#" -eq 2 ]; then
+  if [ $xsorcf = "xs" ]; then
+    dowait=" --wait-indefinitely"
+    doexport1=" --export-json /dev/stdout 2>/dev/null | tail -n +5"
+    #echo "XS cool."
+  else
+    if [ $xsorcf = "cf" ]; then
+      doexport1=" | tail -n +5 | head -n -8"
+      doexport2=" | head -n -1"
+      #echo "CF cool."
+    else
+      #echo "Not XS or CF, try again."
+      exit 1
+    fi
+  fi
+
+  #echo Client HDI $xsorcf Deploy into org: $org space: $space Starting 
+  #echo ""
+  npm config set @sap:registry "https://npm.sap.com/" ; npm config set registry "https://registry.npmjs.org/" ; npm config set strict-ssl true
+
+  instance=$proj"-hdi"
+
+  #echo ""
+
+  cmd='VCAP_SERVICES=$('$xsorcf' env '$app' '$doexport1' | jq -r '"'"'.VCAP_SERVICES'"'"$doexport2')'
+  ##echo $cmd
+  eval $cmd
+  echo $VCAP_SERVICES
+
+else
+    #echo "Usage ./get_VCAP_SERVICES xs[cf] path"
+    exit 1
+fi

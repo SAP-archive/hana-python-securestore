@@ -1,0 +1,39 @@
+ID: mta-python-securestore
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: app
+   type: html5
+   path: app
+   parameters:
+      memory: 256MB
+      disk: 256M
+   requires:
+    - name: python_api
+      group: destinations
+      properties:
+        name: python_be
+        url: ~{url}
+        forwardAuthToken: true
+
+## Python Module Block Begin vvv
+ - name: python
+   type: python
+   path: python
+   parameters:
+      memory: 256MB
+      disk: 256M
+   requires:
+    - name: python_ss
+   provides:
+    - name: python_api
+      properties:
+         url: ${default-url}
+## Python Module Block End ^^^
+
+
+resources:
+ - name: python_ss
+   type: com.sap.xs.hana-securestore
+

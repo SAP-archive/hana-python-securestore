@@ -1,0 +1,26 @@
+// A (hopefully) unique enough file name so that the following can be performed in order to determine it's location.
+
+cd /hana/shared/HXE/xs/controller_data/fss/
+
+find . -name findme.txt -print
+    ./7cc9d1e1-ef25-439a-8e96-399d6ed67e7a/vfsroot/e5/13/9f/workspaces5k2o7ef9ou05hz4/DAT3_010/python/findme.txt
+
+cd ./7cc9d1e1-ef25-439a-8e96-399d6ed67e7a/vfsroot/e5/13/9f/workspaces5k2o7ef9ou05hz4/DAT3_010/python/
+
+mkdir vendor
+
+// Provide a requirements.txt file
+cat requirements.txt
+Flask
+cfenv
+sap_xssec
+sap_py_jwt
+hdbcli
+
+// Get Public and SAP Provided files into the vendor folder(so Python app is self-contained)
+
+sudo pip install -t vendor -r requirements.txt -f /tmp/sap_dependencies
+
+
+// Refresh the WebIDE by right-click on the python folder and -> "Refresh Workspace Items"
+

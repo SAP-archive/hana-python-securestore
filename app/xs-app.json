@@ -1,0 +1,17 @@
+{
+  "welcomeFile": "index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "(python/)(.*)",
+      "destination": "python_be",
+      "csrfProtection": true,
+      "authenticationType": "none"
+    },
+    {
+      "localDir": "resources",
+      "source": "^/(.*)",
+      "authenticationType": "none"
+    }
+  ]
+}

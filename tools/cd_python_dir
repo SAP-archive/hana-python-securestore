@@ -1,0 +1,5 @@
+#!/bin/bash
+echo ""
+echo "Changing to running app directory." ; 
+pyguid=$(xs app python-dev-env_python --guids | grep RUNNING | tr -s " " | cut -d " " -f 12) ; echo $pyguid ; cd /hana/shared/HXE/xs/app_working/hxehost/executionroot/$pyguid/app
+pyguid=$(xs app python-dev-env_python --guids | grep RUNNING | tr -s " " | cut -d " " -f 12) ; echo $pyguid ; cd /hana/shared/HXE/xs/app_working/parvus.lcfx.net/executionroot/$pyguid/app

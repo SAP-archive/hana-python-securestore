@@ -1,0 +1,74 @@
+#!/bin/bash
+echo ""
+xsorcf=$1
+#Customize the org and space to your own situation
+#org="HANAExpress"
+#org="LCFX"
+org="A-Team_ml"
+#space="delvelopment"
+#space="DEV"
+space="ml"
+path=$2
+dest_app=$3
+proj="python-securestore"
+app=$proj"_"$path
+host=$app"-"$path
+dowait=""
+doexport1=""
+doexport2=""
+dodest=""
+if [ "$#" -eq 3 ]; then
+  if [ $xsorcf = "xs" ]; then
+    dowait=" --wait-indefinitely"
+    doexport1=" --export-json /dev/stdout 2>/dev/null | tail -n +5"
+    dodest=" --urls"
+    echo "XS cool."
+  else
+    if [ $xsorcf = "cf" ]; then
+      doexport1=" | tail -n +5 | head -n -8"
+      doexport2=" | head -n -1"
+      dodest=" | grep routes: | tr -s ' ' | cut -d ' ' -f 2 "
+      echo "CF cool."
+    else
+      echo "Not XS or CF, try again."
+      exit 1
+    fi
+  fi
+
+  echo Client App-Router $xsorcf Deploy into org: $org space: $space Starting 
+  echo ""
+
+  cmd=$xsorcf' push '$app' -k 1024M -m 256M -p '$path' --no-start'
+  echo $cmd
+  eval $cmd
+
+  destination_app=$proj"_"$dest_app
+
+  cmd='DESTAPP=$('$xsorcf' app '$destination_app''$dodest')'
+  echo $cmd
+  eval $cmd
+  echo 'DESTAPP='$DESTAPP
+
+  if [ $xsorcf = "cf" ]; then
+     cmd='DESTAPP=$(echo "https://"$DESTAPP)'
+     echo $cmd
+     eval $cmd
+     echo 'DESTAPP='$DESTAPP
+  fi
+
+  cmd=$xsorcf' set-env '$app' destinations '"'"'[{"forwardAuthToken":true, "name":"python_be", "url":"'$DESTAPP'"}]'"'"''
+  echo $cmd
+  eval $cmd
+
+  cmd=$xsorcf' restart '$app' '$dowait
+  echo $cmd
+  eval $cmd
+
+  echo ""
+
+else
+    echo "Usage ./web_deploy xs[cf] path dest_app"
+    exit 1
+fi
+echo ""
+echo Client HDI Deploy Finished
