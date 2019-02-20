@@ -7,25 +7,22 @@ This repo contains a complete example of interfacing with the SAP HANA Secure St
 
 If you are just interested in the python specifics of calling the API, you can find all the details in the [python/server.py](python/server.py) file.
 
-This example is referred to in the official SAP help documentation at the following link.
-
-[Access the SAP HANA Secure Store with Python](https://help.sap.com/viewer/DRAFT/4505d0bdaf4948449b7f7379d24d0f0d/2.0.04/en-US/0d07ee1462c141beb8a86a92bc9cb92e.html)
+This example is referred to in the official SAP help documentation at the following link: [Access the SAP HANA Secure Store with Python](https://help.sap.com/viewer/DRAFT/4505d0bdaf4948449b7f7379d24d0f0d/2.0.04/en-US/0d07ee1462c141beb8a86a92bc9cb92e.html)
 
 ## Requirements
 
 The Secure Store functions are implmented in a SAP HANA Database instance and the sample application must be deployed to a space where the HANA instance is available.
 
-The target deploy environment must have Python runtime 3.6.5 installed(or adjust python/runtime.txt).  Verify with the following.
-```
-xs runtimes
-```
-If the required Python runtime is not available, request it be installed by your HANA system administrator.
+* The target deploy environment must have Python runtime 3.6.5 installed(or adjust python/runtime.txt).  Verify with the following.
+    ```
+    xs runtimes
+    ```
 
-[The SAP HANA XS Advanced Python Run Time](https://help.sap.com/viewer/DRAFT/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/8d786ec8ab964145a7453c1f53f452db.html)
+    If the required Python runtime is not available, request it be installed by your HANA system administrator. Please refer the administrator to the following help files:  [The SAP HANA XS Advanced Python Run Time](https://help.sap.com/viewer/DRAFT/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/8d786ec8ab964145a7453c1f53f452db.html)
 
-A functional python implmentation with pip utility for assembling the python dependencies.  See [Python.ORG](https://www.python.org/)
+* The [latest version of Python](https://www.python.org/), which should also install *pip*.
 
-Either the XSA command-line-interface tools or the CF command-line-interface tool with MTA plugin to facilitate the deploy.  This example will use the XSA CLI. See the [Client package available from the HANA Express Downloader](https://www.sap.com/cmp/ft/crm-xu16-dat-hddedft/index.html) or the [CF CLI + MTA Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin)
+* Either the XSA command-line-interface tools or the CF command-line-interface tool with MTA plugin to facilitate the deploy.  This example will use the XSA CLI. See the [Client package available from the HANA Express Downloader](https://www.sap.com/cmp/ft/crm-xu16-dat-hddedft/index.html) or the [CF CLI + MTA Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin)
 
 A functional java runtime(for the MTA builder tool).  See [Java.COM](https://www.java.com/en/download/)
 
