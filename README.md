@@ -25,7 +25,7 @@ xs runtimes
 
 - If the required Python runtime is not available, request it be installed by your HANA system administrator.
 
->>- [The SAP HANA XS Advanced Python Run Time](https://help.sap.com/viewer/DRAFT/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/8d786ec8ab964145a7453c1f53f452db.html)
+> [The SAP HANA XS Advanced Python Run Time](https://help.sap.com/viewer/DRAFT/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/8d786ec8ab964145a7453c1f53f452db.html)
 
 - A functional python implmentation with pip utility for assembling the python dependencies.  See [Python.ORG](https://www.python.org/)
 
