@@ -1,5 +1,5 @@
-# Python example of HANA SecureStore API
-Multi-Target Application Python example of interfacing with the HANA SecureStore API
+# Python example of HANA Secure Store API
+Multi-Target Application Python example of interfacing with the HANA Secure Store API
 
 ## Description
 
@@ -13,36 +13,31 @@ This example is referred to in the official SAP help documentation at the follow
 
 ## Requirements
 
-The Secure Store functions are implmented in a SAP HANA Database instance and the sample application must be deployed to a space where the HANA instance is available.
+- The user is expected to be familiar with XS Advanced(XSA) application development in general and the Python programming language  and it's packaging utilities(pip) specifically.  Also a working knowledge of XSA organization, spaces, roles, and space mappings is assumed.
 
-The target deploy environment must have Python runtime 3.6.5 installed(or adjust python/runtime.txt).  Verify with the following.
+- The Secure Store functions are implmented in a SAP HANA Database instance and the sample application must be deployed into a space where a HANA instance is available.  
+
+- The target deploy environment must have Python runtime 3.6.5 installed(or adjust python/runtime.txt).  Verify with the following.
+
 ```
 xs runtimes
 ```
-If the required Python runtime is not available, request it be installed by your HANA system administrator.
 
-[The SAP HANA XS Advanced Python Run Time](https://help.sap.com/viewer/DRAFT/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/8d786ec8ab964145a7453c1f53f452db.html)
+- If the required Python runtime is not available, request it be installed by your HANA system administrator.
 
-A functional python implmentation with pip utility for assembling the python dependencies.  See [Python.ORG](https://www.python.org/)
+- [The SAP HANA XS Advanced Python Run Time](https://help.sap.com/viewer/DRAFT/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/8d786ec8ab964145a7453c1f53f452db.html)
 
-Either the XSA command-line-interface tools or the CF command-line-interface tool with MTA plugin to facilitate the deploy.  This example will use the XSA CLI. See the [Client package available from the HANA Express Downloader](https://www.sap.com/cmp/ft/crm-xu16-dat-hddedft/index.html) or the [CF CLI + MTA Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin)
+- A functional python implmentation with pip utility for assembling the python dependencies.  See [Python.ORG](https://www.python.org/)
 
-A functional java runtime(for the MTA builder tool).  See [Java.COM](https://www.java.com/en/download/)
+- Either the XSA command-line-interface tools or the Cloud Foundry(CF) command-line-interface tool with MTA plugin to facilitate the deploy.  This example will use the XSA CLI. See the [Client package available from the HANA Express Downloader](https://www.sap.com/cmp/ft/crm-xu16-dat-hddedft/index.html) or the [CF CLI + MTA Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin)
 
-The MTA builder tool jar file.  See [Multitarget Application Archive Builder](https://help.sap.com/viewer/58746c584026430a890170ac4d87d03b/Cloud/en-US/ba7dd5a47b7a4858a652d15f9673c28d.html) 
+- A functional java runtime(for the MTA builder tool).  See [Java.COM](https://www.java.com/en/download/)
 
-A functional NodeJS implementation with NPM utility for assembling the nodejs dependencies. See [NodeJS.ORG](https://nodejs.org/en/)
+- The MTA builder tool jar file.  See [Multitarget Application Archive Builder](https://help.sap.com/viewer/58746c584026430a890170ac4d87d03b/Cloud/en-US/ba7dd5a47b7a4858a652d15f9673c28d.html) 
 
-This example project also requires python libraries provided by SAP to users with authorized access to download SAP software.
+- A functional NodeJS implementation for assembling the nodejs dependencies. See [NodeJS.ORG](https://nodejs.org/en/)
 
-Note: There is an current effort to make these libraries publically available.  See the To-Do section below.
-
-Once installed or vendored, the following python libraries are provided to the python module of the application.
-
-- cfenv
-- sap_py_jwt
-- sap_xssec
-- hdbcli
+- This example project also requires python libraries provided by SAP.  See the Download and Installation section for details on where to download them.
 
 ## Download and Installation
 
@@ -102,10 +97,6 @@ Discover the deployed application's URL and open it in a browser.
 ```
 xs app hana-python-securestore.app --urls
 ```
-
-## Configuration
-
-This example contains no configuration options.
 
 ## Limitations
 
