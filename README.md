@@ -43,7 +43,7 @@ xs runtimes
 
 ## Download and Installation
 
-These instructions assume Linux/MacOS path seperators.  If you are on Windows, substitute "/" for "\" in the commands below.
+These instructions assume Linux/MacOS path seperators.  If you are on Windows, substitute "/" for "\\" in the commands below.
 
 - Follow the help instructions at the following link in order to download the XS_PYTHON.ZIP file.
 
