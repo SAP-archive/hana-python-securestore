@@ -1,5 +1,5 @@
-# hana-python-securestore
-Multi-Target Application Python example of interfacing with the HANA Secure Store API
+# Python example of HANA SecureStore API
+Multi-Target Application Python example of interfacing with the HANA SecureStore API
 
 ## Description
 
