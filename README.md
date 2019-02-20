@@ -17,7 +17,7 @@ This example is referred to in the official SAP help documentation at the follow
 
 - The Secure Store functions are implmented in a SAP HANA Database instance and the sample application must be deployed into a space where a HANA instance is available.  
 
-- The target deploy environment must have Python runtime 3.6.5 installed(or adjust python/runtime.txt).  Verify with the following.
+- The target deploy environment must have Python runtime 3.6.5 installed(or adjust python/runtime.txt).  Verify with the following using the XSA command-line-interface tool.
 
 ```
 xs runtimes
@@ -29,7 +29,7 @@ xs runtimes
 
 - A functional python implmentation with pip utility for assembling the python dependencies.  See [Python.ORG](https://www.python.org/)
 
-- Either the XSA command-line-interface tools or the Cloud Foundry(CF) command-line-interface tool with MTA plugin to facilitate the deploy.  This example will use the XSA CLI. See the [Client package available from the HANA Express Downloader](https://www.sap.com/cmp/ft/crm-xu16-dat-hddedft/index.html) or the [CF CLI + MTA Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin)
+- Either the XSA command-line-interface tools(xs) or the Cloud Foundry(CF) command-line-interface tool(cf) with MTA plugin to facilitate the deploy.  This example will use the XSA CLI. See the [Client package available from the HANA Express Downloader](https://www.sap.com/cmp/ft/crm-xu16-dat-hddedft/index.html) or the [CF CLI + MTA Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin)
 
 - A functional java runtime(for the MTA builder tool).  See [Java.COM](https://www.java.com/en/download/)
 
@@ -37,17 +37,21 @@ xs runtimes
 
 - A functional NodeJS implementation for assembling the nodejs dependencies. See [NodeJS.ORG](https://nodejs.org/en/)
 
+- A functional git client.
+
 - This example project also requires python libraries provided by SAP.  See the Download and Installation section for details on where to download them.
 
 ## Download and Installation
 
-Follow the help instructions at the following link in order to download the XS_PYTHON.ZIP file.
+These instructions assume Linux/MacOS path seperators.  If you are on Windows, substitute "/" for "\" in the commands below.
 
-[Download and Consume Python Libraries](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/842824f04d654ceeaf5168da663a65ce.html)
+- Follow the help instructions at the following link in order to download the XS_PYTHON.ZIP file.
 
-Note: The following should be performed on a Linux system.  The python pip utility has a tendency to pick up versions of the libraries of the current system's architecture and this will cause the deployed application to crash.
+- [Download and Consume Python Libraries](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/842824f04d654ceeaf5168da663a65ce.html)
 
-Create a folder (using sap_dependencies here to mimik the help documentation) and unzip the file contents into it.
+Note: The following should be performed on a Linux based system.  The python pip utility has a tendency to pick up versions of the libraries of the current system's architecture and this will cause the deployed application to crash.  If you are running on a Windows system you can either use a Secure Shell client(SSH) such as Putty to shell into your HANA instance or install a small Linux based system using a virtual machine or Docker container.  Details are beyond the scope of this document.
+
+- Create a folder (using sap_dependencies here to mimik the help documentation) and unzip the file contents into it.
 The file name was XS_PYTHON00_1-70003433.ZIP as of the date this repo was last updated.  You may need to adjust the filename.
 
 ```
@@ -55,22 +59,22 @@ mkdir -p sap_dependencies
 unzip XS_PYTHON00_1-70003433.ZIP -d sap_dependencies
 ```
 
-Clone this repo at the same directory level as the sap_dependencies folder.
+- Clone this repo at the same directory level as the sap_dependencies folder.
 ```
 git clone https://github.com/SAP/hana-python-securestore.git
 ```
 
-Change into the project folder.
+- Change into the project folder.
 ```
 cd hana-python-securestore
 ```
 
-If pip doesn't support the download sub-command you may need to update it.
+- If pip doesn't support the download sub-command you may need to update it.
 ```
 pip install --upgrade pip
 ```
 
-Pull all the python dependencies into a "vendor" folder that will be bundled into the project.
+- Pull all the python dependencies into a "vendor" folder that will be bundled into the project.
 ```
 cd python
 mkdir -p vendor
@@ -78,7 +82,7 @@ pip download -d vendor -r requirements.txt --find-links ../../sap_dependencies
 cd ..
 ```
 
-Pull all the NodeJS dependencies into a "node_modules" folder that will be bundled into the project.
+- Pull all the NodeJS dependencies into a "node_modules" folder that will be bundled into the project.
 ```
 tools/set_nodejs_env
 cd app
@@ -86,14 +90,14 @@ npm install
 cd ..
 ```
 
-Build the MTAR and deploy the application to a space where an SAP HANA instance is available.
+- Build the MTAR and deploy the application to a space where an SAP HANA instance is available.
 ```
 mkdir -p target
 java -jar ../mta_archive_builder-1.1.7.jar --build-target XSA --mtar target/python-securestore_xsa.mtar build
 xs deploy target/python-securestore_xsa.mtar --use-namespaces
 ```
 
-Discover the deployed application's URL and open it in a browser.
+- Discover the deployed application's URL and open it in a browser.
 ```
 xs app hana-python-securestore.app --urls
 ```
