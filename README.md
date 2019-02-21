@@ -47,19 +47,19 @@ These instructions assume Linux/MacOS path seperators.  If you are on Windows, s
 
 - Follow the help instructions at the following link in order to download the XS_PYTHON.ZIP file.
 
-- [Download and Consume Python Libraries](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/842824f04d654ceeaf5168da663a65ce.html)
+> [Download and Consume Python Libraries](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/842824f04d654ceeaf5168da663a65ce.html)
 
-Note: The following should be performed on a Linux based system.  The python pip utility has a tendency to pick up versions of the libraries of the current system's architecture and this will cause the deployed application to crash.  If you are running on a Windows system you can either use a Secure Shell client(SSH) such as Putty to shell into your HANA instance or install a small Linux based system using a virtual machine or Docker container.  Details are beyond the scope of this document.
+**Note:** The following should be performed on a Linux based system.  The python pip utility has a tendency to pick up versions of the libraries of the current system's architecture and this will cause the deployed application to crash.  If you are running on a Windows system you can either use a Secure Shell client(SSH) such as Putty to shell into your HANA instance or install a small Linux based system using a virtual machine or Docker container.  Details are beyond the scope of this document.
 
 - Create a folder (using sap_dependencies here to mimik the help documentation) and unzip the file contents into it.
-The file name was XS_PYTHON00_1-70003433.ZIP as of the date this repo was last updated.  You may need to adjust the filename.
+The file name was XS_PYTHON00_1-70003433.ZIP as of the date this repo was last updated.  You may need to adjust the filename accordingly.
 
 ```
 mkdir -p sap_dependencies
 unzip XS_PYTHON00_1-70003433.ZIP -d sap_dependencies
 ```
 
-- Clone this repo at the same directory level as the sap_dependencies folder.
+- Clone this repo at the same directory level as the sap_dependencies folder.  For details on cloning a repo see [Cloning a repository](https://help.github.com/articles/cloning-a-repository/)
 ```
 git clone https://github.com/SAP/hana-python-securestore.git
 ```
@@ -69,7 +69,7 @@ git clone https://github.com/SAP/hana-python-securestore.git
 cd hana-python-securestore
 ```
 
-- If pip doesn't support the download sub-command you may need to update it.
+**Note:** If pip doesn't support the download sub-command you may need to update it.
 ```
 pip install --upgrade pip
 ```
@@ -108,13 +108,11 @@ This example is intended to illustrate the use of the Secure Storage API in a HA
 
 ## Known Issues
 
-This example contains no known issues and is provided "as-is".
+This example contains no known issues.
 
 ## How to obtain support
 
 This project is provided "as-is" with no expectation for major changes or support.
-
-You may attempt to contact the original author [Andrew Lunde](mailto:andrew.lunde@sap.com) if you find errors in this document.
 
 ## Contributing
 
