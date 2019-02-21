@@ -123,5 +123,5 @@ This project is provided "as-is" and is not accepting contributors.
 The required python libraries may become publically available on PyPi at some point in the future.  If this becomes the case, the requirements will be simplified to remove the downloading of the SAP Python Libraries.
 
 ## License
- Copyright (c) 2017 SAP SE or an SAP affiliate company. All rights reserved.
- This file is licensed under the Apache Software License, v. 2 except as noted otherwise in the [LICENSE file](LICENSE).
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+ This file is licensed under the SAP SAMPLE CODE LICENSE AGREEMENT except as noted otherwise in the [LICENSE file](LICENSE).
