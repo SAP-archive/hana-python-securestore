@@ -190,7 +190,7 @@ def unauth_ss_retrieve():
     # https://blogs.sap.com/2017/07/26/sap-hana-2.0-sps02-new-feature-updated-python-driver/
 
     # cursor.execute('call SYS.USER_SECURESTORE_RETRIEVE (\'TestStoreName\',
-	#                False, \'TestKey\', ?)')
+    # False, \'TestKey\', ?)')
     hexvalue = cursor.callproc("SYS.USER_SECURESTORE_RETRIEVE",
                                ("TestStoreName", False, "TestKey", None))
 
