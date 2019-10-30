@@ -38,9 +38,9 @@ hana = env.get_service(label='hana')
 
 @app.route('/')
 def hello_world():
-    output = '<strong>Python SecureStore! Instance ' +
-    str(os.getenv("CF_INSTANCE_INDEX", 0)) +
-    '</strong> Try these links.</br>\n'
+    output = '<strong>Python SecureStore! Instance ' + \
+             str(os.getenv("CF_INSTANCE_INDEX", 0)) + \
+             '</strong> Try these links.</br>\n'
     output += '<a href="/python/links">/python/links</a><br />\n'
     return output
 
@@ -56,9 +56,9 @@ def favicon():
 # Coming through the app-router
 @app.route('/python/links')
 def python_links():
-    output = '<strong>Python SecureStore! Instance ' +
-    str(os.getenv("CF_INSTANCE_INDEX", 0)) +
-    '</strong> Try these links.</br>\n'
+    output = '<strong>Python SecureStore! Instance ' + \
+             str(os.getenv("CF_INSTANCE_INDEX", 0)) + \
+             '</strong> Try these links.</br>\n'
     output += '<a href="/python/insert">/python/insert</a><br />\n'
     output += '<a href="/python/retrieve">/python/retrieve</a><br />\n'
     output += '<a href="/python/delete">/python/delete</a><br />\n'
@@ -124,8 +124,8 @@ def unauth_ss_insert():
     try:
         cursor.callproc("SYS.USER_SECURESTORE_INSERT",
                         ("TestStoreName", False, "TestKey", hex2store))
-        output += 'key TestKey with value ' + string2store + '=' + hex2store +
-        ' was inserted into store TestStoreName.' + '\n'
+        output += 'key TestKey with value ' + string2store + '=' + \
+                  hex2store + ' was inserted into store TestStoreName.\n'
     except:
         output += 'key TestKey likely already exists. Try deleting first.\n'
 
@@ -138,7 +138,7 @@ def unauth_ss_insert():
 
 @app.route('/python/retrieve')
 def unauth_ss_retrieve():
-    output = 'Python UnAuthorized SecureStore Retrieve. \n'
+    output = 'Python UnAuthorized SecureStore Retrieve.\n'
 
     schema = hana.credentials['schema']
     host = hana.credentials['host']
@@ -200,12 +200,12 @@ def unauth_ss_retrieve():
     import codecs
 
     if hexvalue[3] is None:
-        output += 'key TestKey does not exist in store TestStoreName. ' +
-        'Try inserting a value first.\n'
+        output += 'key TestKey does not exist in store TestStoreName. ' + \
+                  'Try inserting a value first.\n'
     else:
         retrieved = codecs.decode(hexvalue[3].hex(), "hex").decode()
-        output += 'key TestKey with value ' + retrieved +
-        ' was retrieved from store TestStoreName.\n'
+        output += 'key TestKey with value ' + retrieved + \
+                  ' was retrieved from store TestStoreName.\n'
 
     # Return the results
     return Response(output, mimetype='text/plain', status=200,)
@@ -267,7 +267,7 @@ def unauth_ss_delete():
     # Close the DB connection
     connection.close()
 
-    output += 'key TestKey was deleted from store TestStoreName.' + '\n'
+    output += 'key TestKey was deleted from store TestStoreName.\n'
 
     # Return the results
     return Response(output, mimetype='text/plain', status=200,)
