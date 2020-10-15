@@ -120,4 +120,4 @@ The required python libraries may become publically available on PyPi at some po
 
 ## License
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
- This file is licensed under the SAP SAMPLE CODE LICENSE AGREEMENT except as noted otherwise in the [LICENSE file](LICENSE).
+ This project is licensed under the SAP SAMPLE CODE LICENSE AGREEMENT except as noted otherwise in the [LICENSE file](LICENSE).
