@@ -3,7 +3,7 @@ _schema-version: '2.1'
 version: 0.0.1
 
 modules:
- - name: app
+ - name: hpss-app
    type: html5
    path: app
    parameters:
@@ -18,7 +18,7 @@ modules:
         forwardAuthToken: true
 
 ## Python Module Block Begin vvv
- - name: python
+ - name: hpss-pyt
    type: python
    path: python
    parameters:

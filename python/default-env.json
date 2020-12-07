@@ -1,0 +1,28 @@
+{
+    "PORT": 8080,
+    "VCAP_SERVICES": {
+        "hana":[
+            {
+                "binding_name":null,
+                "credentials":{
+                    "certificate":"-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\nQTAeFw0wNjExMTAwMDAwMDBaFw0zMTExMTAwMDAwMDBaMGExCzAJBgNVBAYTAlVT\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\nb20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IENBMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jvhEXLeqKTTo1eqUKKPC3eQyaKl7hLOllsB\nCSDMAZOnTjC3U/dDxGkAV53ijSLdhwZAAIEJzs4bg7/fzTtxRuLWZscFs3YnFo97\nnh6Vfe63SKMI2tavegw5BmV/Sl0fvBf4q77uKNd0f3p4mVmFaG5cIzJLv07A6Fpt\n43C/dxC//AH2hdmoRBBYMql1GNXRor5H4idq9Joz+EkIYIvUX7Q6hL+hqkpMfT7P\nT19sdl6gSzeRntwi5m3OFBqOasv+zbMUZBfHWymeMr/y7vrTC0LUq7dBMtoM1O/4\ngdW7jVg/tRvoSSiicNoxBN33shbyTApOB6jtSj1etX+jkMOvJwIDAQABo2MwYTAO\nBgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUA95QNVbR\nTLtm8KPiGxvDl7I90VUwHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUw\nDQYJKoZIhvcNAQEFBQADggEBAMucN6pIExIK+t1EnE9SsPTfrgT1eXkIoyQY/Esr\nhMAtudXH/vTBH1jLuG2cenTnmCmrEbXjcKChzUyImZOMkXDiqw8cvpOp/2PV5Adg\n06O/nVsJ8dWO41P0jmP6P6fbtGbfYmbW0W5BjfIttep3Sp+dWOIrWcBAI+0tKIJF\nPnlUkiaY4IBIqDfv8NZ5YBberOgOzW6sRBc4L0na4UU+Krk2U886UAb3LujEV0ls\nYSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk\nCAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=\n-----END CERTIFICATE-----",
+                    "driver":"com.sap.db.jdbc.Driver",
+                    "host":"a26dc540-b231-47b5-9a86-c019d0bce528.hana.prod-us10.hanacloud.ondemand.com",
+                    "password":"Xr5Vx3XdJYiqBfp6DlM0kafOT6dbLOV5X1NaCPymSy.Hd3bCRcpnxr2SEAIA-4.Ko2MQUc3UxN4R-GMHygSA7boBakvDiz5wQN0CVPYusMBzI.sF2JvseLLlLTgki.EQ",
+                    "port":"443",
+                    "schema":"USR_3SFZWLPSEWJI6EFKX9DFSFGJZ",
+                    "url":"jdbc:sap://a26dc540-b231-47b5-9a86-c019d0bce528.hana.prod-us10.hanacloud.ondemand.com:443?encrypt=true\u0026validateCertificate=true\u0026currentschema=USR_3SFZWLPSEWJI6EFKX9DFSFGJZ",
+                    "user":"USR_3SFZWLPSEWJI6EFKX9DFSFGJZ"
+                },
+                "instance_name":"python_ss",
+                "label":"hana",
+                "name":"python_ss",
+                "plan":"securestore",
+                "provider":null,
+                "syslog_drain_url":null,
+                "tags":["hana","database","relational"],
+                "volume_mounts":[]
+            }
+        ]
+    }
+}
