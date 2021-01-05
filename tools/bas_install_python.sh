@@ -1,57 +1,115 @@
 #!/bin/bash
-#echo ""
+do_run=1 # Execute(evaluate) the commands
+#do_run=0 # Don't evaluate any commands
+#do_echo=1 # Echo the commands
+do_echo=0 # Don't echo any commands
+#
+echo ""
+#destdir="/home/user/projects/hana-python-securestore/tools"
+#destdir="/home/user"
 pyver="3_9_0"
-#rcfile="~/.bashrc"
-rcfile="bashrc"
-space="DEV"
-path=$2
-proj="python-dev-env"
-app=$proj"_"$path
-host=$app"-"$path
-dowait=""
-doexport1=""
-doexport2=""
-if [ "$#" -eq 1 ]; then
+pymin="3.9"
+rcfile="~/.bashrc"
+#rcfile="bashrc"
+
+if [ "$#" -ge 1 ]; then
   pyver=$1
-  echo $pyver
   if [ $pyver = "3_9_0" ]; then
     echo "Version 3_9_0 cool."
+    pymin="3.9"
   else
     if [ $pyver = "3_9_1" ]; then
       echo "Version 3_9_1 cool."
+      pymin="3.9"
     else
       echo "Version $pyver is not supported, try again."
       exit 1
     fi
   fi
-  #echo Client HDI $pyver Deploy into org: $org space: $space Starting 
-  #echo ""
-
-  instance=$proj"-hdi"
-
-  #echo ""
-
-  #cmd='VCAP_SERVICES=$('$pyver' env '$app' '$doexport1' | jq -r '"'"'.VCAP_SERVICES'"'"$doexport2')'
-  ##echo $cmd
-  #eval $cmd
-  #echo $VCAP_SERVICES
 fi
 
+if [ "$#" -ge 2 ]; then
+  destdir=$2
+else
+  destdir="/home/user"
+fi
+
+
+echo ""
 echo "Installing Python Version $pyver."
 
-cmd='cd /home/user'
-echo $cmd
-#eval $cmd
+echo ""
+echo "Changing to "$destdir
+cmd='cd '$destdir
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-cmd='cd /home/user'
-echo $cmd
-#eval $cmd
+echo ""
+echo "Downloading python_"$pyver".tgz"
+cmd='curl -JLOC - https://github.com/SAP-samples/hana-python-securestore/releases/download/v0.0.0/python_'$pyver'.tgz'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-curl -JLOC - https://github.com/SAP-samples/hana-python-securestore/releases/download/v0.0.0/python_3_9_0.tgz
-tar xzvf python_3_9_0.tgz
-echo '' >> ~/.bashrc
-echo '# Python specific environment variables.' >> ~/.bashrc
-echo 'export PYTHONHOME=/home/user/python_3_9_0' >> ~/.bashrc
-echo 'export PYTHONPATH=$PYTHONHOME/lib/python3.9' >> ~/.bashrc
-echo 'export PATH=/home/user/python_3_9_0/bin:$PATH' >> ~/.bashrc
+echo ""
+echo "Untarring python_"$pyver".tgz"
+cmd='tar xzf python_'$pyver'.tgz'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+echo ""
+echo "Appending Python related environment vars to "$rcfile
+cmd='echo '"''"' >> '$rcfile
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='echo '"'"'# Python specific environment variables.'"'"' >> '$rcfile
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='echo '"'"'export PYTHONHOME='$destdir'/python_'$pyver''"'"' >> '$rcfile
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='echo '"'"'export PYTHONPATH=$PYTHONHOME/lib/python'$pymin''"'"' >> '$rcfile
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='echo '"'"'export PATH='$destdir'/python_'$pyver'/bin:$PATH'"'"' >> '$rcfile
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='export PYTHONHOME='$destdir'/python_'$pyver
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='export PYTHONPATH=$PYTHONHOME/lib/python'$pymin
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='export PATH='$destdir'/python_'$pyver'/bin:$PATH'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+echo ""
+echo "Get Python Version"
+cmd='python -V'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+echo ""
+echo "Update Python Tools"
+cmd='pip install --upgrade pip'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='pip install --upgrade setuptools'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='pip install --upgrade wheel'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+echo ""
+echo "Install of python_"$pyver" finished."
 
