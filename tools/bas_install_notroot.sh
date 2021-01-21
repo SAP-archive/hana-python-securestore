@@ -4,25 +4,24 @@ do_run=1 # Execute(evaluate) the commands
 #do_echo=1 # Echo the commands
 do_echo=0 # Don't echo any commands
 #
+# See https://blogs.sap.com/2020/12/10/xtending-business-application-studio-1-of-3/
+#
 echo ""
 #destdir="/home/user/projects/hana-python-securestore/tools"
 #destdir="/home/user"
-pyver="3_9_0"
-pymin="3.9"
+nrver="0_0_1"
 rcfile="~/.bashrc"
 #rcfile="bashrc"
 
 if [ "$#" -ge 1 ]; then
-  pyver=$1
-  if [ $pyver = "3_9_0" ]; then
-    echo "Version 3_9_0 cool."
-    pymin="3.9"
+  nrver=$1
+  if [ $nrver = "0_0_1" ]; then
+    echo "Version 0_0_1 cool."
   else
-    if [ $pyver = "3_9_1" ]; then
-      echo "Version 3_9_1 cool."
-      pymin="3.9"
+    if [ $nrver = "0_0_2" ]; then
+      echo "Version 0_0_2 cool."
     else
-      echo "Version $pyver is not supported, try again."
+      echo "Version $nrver is not supported, try again."
       exit 1
     fi
   fi
@@ -36,7 +35,7 @@ fi
 
 
 echo ""
-echo "Installing Python Version $pyver."
+echo "Installing NOTROOT Version $nrver."
 
 echo ""
 echo "Changing to "$destdir
@@ -44,72 +43,56 @@ cmd='cd '$destdir
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-echo ""
-echo "Downloading python_"$pyver".tgz"
-cmd='curl -JLOC - https://github.com/SAP-samples/hana-python-securestore/releases/download/v0.0.0/python_'$pyver'.tgz'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
+#git clone https://github.com/andrewlunde/notroot.git /home/user/notroot
+#cat /home/user/notroot/add2bashrc.txt >> ~/.bashrc
+#export APT_CONFIG=/home/user/notroot/apt.conf
+#source "$HOME/notroot/bashrc"
+#export PERL5LIB=/home/user/notroot/usr/lib/x86_64-linux-gnu/perl5/5.28:$PERL5LIB
+#/home/user/notroot/prepapt
 
 echo ""
-echo "Untarring python_"$pyver".tgz"
-cmd='tar xzf python_'$pyver'.tgz'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-echo ""
-echo "Appending Python related environment vars to "$rcfile
-cmd='echo '"''"' >> '$rcfile
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='echo '"'"'# Python specific environment variables.'"'"' >> '$rcfile
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='echo '"'"'export PYTHONHOME='$destdir'/python_'$pyver''"'"' >> '$rcfile
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='echo '"'"'export PYTHONPATH=$PYTHONHOME/lib/python'$pymin''"'"' >> '$rcfile
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='echo '"'"'export PATH='$destdir'/python_'$pyver'/bin:$PATH'"'"' >> '$rcfile
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='export PYTHONHOME='$destdir'/python_'$pyver
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='export PYTHONPATH=$PYTHONHOME/lib/python'$pymin
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='export PATH='$destdir'/python_'$pyver'/bin:$PATH'
+echo "Cloning notroot "$nrver"."
+cmd='git clone https://github.com/andrewlunde/notroot.git /home/user/notroot'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
-echo "Get Python Version"
-cmd='python -V'
+echo "Modifying .bashrc"
+cmd='cat /home/user/notroot/add2bashrc.txt >> ~/.bashrc'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
-echo "Update Python Tools"
-cmd='pip install --upgrade pip'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='pip install --upgrade setuptools'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-cmd='pip install --upgrade wheel'
+echo "Export APT_CONFIG"
+cmd='export APT_CONFIG=/home/user/notroot/apt.conf'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
-echo "Install of python_"$pyver" finished."
+echo "Source bashrc"
+cmd='source "$HOME/notroot/bashrc"'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+echo ""
+echo "Export PERL5LIB"
+cmd='export PERL5LIB=/home/user/notroot/usr/lib/x86_64-linux-gnu/perl5/5.28:$PERL5LIB'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+echo ""
+echo "Prepping APT"
+cmd='/home/user/notroot/prepapt'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+
+echo ""
+echo "Get JQ Version"
+cmd='jq -V'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+echo ""
+echo "Install of NOTROOT_"$nrver" finished."
 
