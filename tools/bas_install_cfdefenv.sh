@@ -55,7 +55,7 @@ if [ $do_run -eq 1 ]; then eval $cmd; fi
 //cf install-plugin DefaultEnv.linux64
 echo ""
 echo "Installing CF DefaultEnv Plugin "$pluginmin".linux64"
-cmd='cf install-plugin DefaultEnv.linux64'
+cmd='cf install-plugin DefaultEnv.linux64 -f'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
