@@ -47,7 +47,6 @@ if [ $do_run -eq 1 ]; then eval $cmd; fi
 echo ""
 echo "Downloading CF DefaultEnv Plugin "$pluginmin".linux64"
 cmd='curl -LJO https://github.com/saphanaacademy/DefaultEnv/releases/download/v'$pluginmin'/DefaultEnv.linux64'
-//cmd='curl -JLOC - https://github.com/SAP-samples/hana-python-securestore/releases/download/v0.0.0/python_'$pluginver'.tgz'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
