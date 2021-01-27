@@ -12,21 +12,21 @@ pluginmin="1.1.1"
 rcfile="~/.bashrc"
 #rcfile="bashrc"
 
-if [ "$#" -ge 1 ]; then
-  pluginver=$1
-  if [ $pluginver = "1_1_1" ]; then
-    echo "Version 1_1_1 cool."
-    pluginmin="1.1.1"
-  else
-    if [ $pluginver = "1_1_1" ]; then
-      echo "Version 1_1_1 cool."
-      pluginmin="1.1.1"
-    else
-      echo "Version $pluginver is not supported, try again."
-      exit 1
-    fi
-  fi
-fi
+#if [ "$#" -ge 1 ]; then
+#  pluginver=$1
+#  if [ $pluginver = "1_1_1" ]; then
+#    echo "Version 1_1_1 cool."
+#    pluginmin="1.1.1"
+#  else
+#    if [ $pluginver = "1_1_1" ]; then
+#      echo "Version 1_1_1 cool."
+#      pluginmin="1.1.1"
+#    else
+#      echo "Version $pluginver is not supported, try again."
+#      exit 1
+#    fi
+#  fi
+#fi
 
 if [ "$#" -ge 2 ]; then
   destdir=$2
