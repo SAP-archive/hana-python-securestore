@@ -7,8 +7,8 @@ do_echo=0 # Don't echo any commands
 echo ""
 #destdir="/home/user/projects/hana-python-securestore/tools"
 #destdir="/home/user"
-pluginver="1_1_1"
-pluginmin="1.1.1"
+pluginver="1_2_2"
+pluginmin="1.2.2"
 rcfile="~/.bashrc"
 #rcfile="bashrc"
 
@@ -44,11 +44,25 @@ cmd='cd '$destdir
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
+# Use this if you can get the plugin published on plugins.cloudfoundry.org
+#echo ""
+#echo "Installing Latest SMSI CF Plugin"
+#cmd='cf install-plugin -r CF-Community "service-management" -f'
+#if [ $do_echo -eq 1 ]; then echo $cmd; fi
+#if [ $do_run -eq 1 ]; then eval $cmd; fi
 
+
+# Otherwise download and install directly
 echo ""
-echo "Installing Latest SMSI CF Plugin"
-cmd='cf install-plugin -r CF-Community "service-management" -f'
+echo "Downloading CF SMSI Plugin "$pluginmin".linux64"
+cmd='curl -LJO https://github.com/SAP/cf-cli-smsi-plugin/releases/download/v'$pluginmin'/ServiceManagement.linux64'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
 
+//cf install-plugin ServiceManagement.linux64
+echo ""
+echo "Installing CF SMSI Plugin "$pluginmin".linux64"
+cmd='cf install-plugin ServiceManagement.linux64 -f'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
