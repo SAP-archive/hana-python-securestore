@@ -7,8 +7,8 @@ do_echo=0 # Don't echo any commands
 echo ""
 #destdir="/home/user/projects/hana-python-securestore/tools"
 #destdir="/home/user"
-pluginver="1_2_3"
-pluginmin="1.2.3"
+pluginver="1_2_4"
+pluginmin="1.2.4"
 rcfile="~/.bashrc"
 #rcfile="bashrc"
 
