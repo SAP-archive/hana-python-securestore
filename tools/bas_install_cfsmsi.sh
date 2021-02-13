@@ -55,7 +55,7 @@ if [ $do_run -eq 1 ]; then eval $cmd; fi
 # Otherwise download and install directly
 echo ""
 echo "Downloading CF SMSI Plugin "$pluginmin".linux64"
-cmd='curl -LJO https://github.com/SAP/cf-cli-smsi-plugin/releases/download/v'$pluginmin'/ServiceManagement.linux64'
+cmd='curl -LO https://github.com/SAP/cf-cli-smsi-plugin/releases/download/v'$pluginmin'/ServiceManagement.linux64'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
