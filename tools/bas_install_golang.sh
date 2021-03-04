@@ -60,13 +60,13 @@ if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
 echo "Downloading go"$gomin".tar.gz"
-cmd='curl -LO https://dl.google.com/go/go'$gomin'.tar.gz'
+cmd='curl -LO https://dl.google.com/go/go'$gomin'.linux-amd64.tar.gz'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
 echo "Untarring go"$gomin".tar.gz"
-cmd='tar -C '$destdir' -xzf go'$gomin'.tar.gz'
+cmd='tar -C '$destdir' -xzf go'$gomin'.linux-amd64.tar.gz'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
