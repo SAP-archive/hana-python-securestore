@@ -31,7 +31,7 @@ fi
 if [ "$#" -ge 2 ]; then
   destdir=$2
 else
-  destdir="/home/user/notroot"
+  destdir="/home/user"
 fi
 
 
@@ -66,7 +66,7 @@ if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
 echo "Untarring go"$gomin".tar.gz"
-cmd='tar -C /home/user/notroot -xzf go'$gomin'.tar.gz'
+cmd='tar -C '$destdir' -xzf go'$gomin'.tar.gz'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
