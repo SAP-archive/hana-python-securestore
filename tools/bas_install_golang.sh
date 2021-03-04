@@ -108,7 +108,7 @@ if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
 echo "Get GoLang Version"
-cmd='go version'
+cmd=$destdir'/go/bin/go version'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
