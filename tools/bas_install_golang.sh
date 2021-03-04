@@ -31,12 +31,18 @@ fi
 if [ "$#" -ge 2 ]; then
   destdir=$2
 else
-  destdir="/home/user"
+  destdir="/home/user/goroot"
 fi
 
 
 echo ""
 echo "Installing GoLang Version $gover."
+
+echo ""
+echo "Creating "$destdir
+cmd='mkdir -p '$destdir
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
 echo "Changing to "$destdir
