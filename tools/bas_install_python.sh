@@ -18,11 +18,11 @@ if [ "$#" -ge 1 ]; then
     echo "Version 3_9_0 cool."
     pymin="3.9"
   else
-    if [ $pyver = "3_9_1" ]; then
-      echo "Version 3_9_1 cool."
+    if [ $pyver = "3_9_2" ]; then
+      echo "Version 3_9_2 cool."
       pymin="3.9"
     else
-      echo "Version $pyver is not supported, try again."
+      echo "Version $pyver is not supported, try again with 3_9_0 or 3_9_2."
       exit 1
     fi
   fi
