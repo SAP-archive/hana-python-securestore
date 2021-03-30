@@ -30,27 +30,39 @@ fi
 if [ "$#" -ge 2 ]; then
   destdir=$2
 else
-  destdir="/home/user/notroot"
+  destdir="/home/user/python_3_9_2"
 fi
 
 echo ""
-echo "Checking if NOTROOT installed."
+echo "Checking if python 3.9.2 installed."
 
 if [ -d "$destdir" ]; then
 
 echo ""
 echo $destdir exists!
 
-cmd='notroot install mitmproxy'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
+#cmd='notroot install mitmproxy'
+#if [ $do_echo -eq 1 ]; then echo $cmd; fi
 #if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-cmd='sed -i -e "s/\/usr\/bin\/python3/\/home\/user\/notroot\/usr\/bin\/python3/g" /home/user/notroot/usr/bin/mitmproxy'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
+#cmd='sed -i -e "s/\/usr\/bin\/python3/\/home\/user\/notroot\/usr\/bin\/python3/g" /home/user/notroot/usr/bin/mitmproxy'
+#if [ $do_echo -eq 1 ]; then echo $cmd; fi
 #if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='pip install pipx'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='pip install mitmproxy'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='mitmproxy --options'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 else
 echo ""
 echo $destdir does not exist!
-echo "Install NOTROOT before attempting to install mitmproxy!"
+echo "Install python 3.9.2 before attempting to install mitmproxy!"
 fi
