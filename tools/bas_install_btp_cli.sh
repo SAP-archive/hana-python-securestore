@@ -62,6 +62,18 @@ cmd='curl -L -o '$destdir'/btp http://thedrop.sap-partner-eng.com/files/btp'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
+cmd='chmod 755'$destdir'/btp'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='echo '"''"' >> '$rcfile
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='echo '"'"'# Add BTP CLI to PATH.'"'"' >> '$rcfile
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
 cmd='echo '"'"'export PATH='$destdir':$PATH'"'"' >> '$rcfile
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
