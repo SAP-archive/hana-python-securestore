@@ -30,16 +30,23 @@ fi
 if [ "$#" -ge 2 ]; then
   destdir=$2
 else
-  destdir="/home/user/python_3_9_2"
+  destdir="/home/user/bin"
 fi
 
 echo ""
-echo "Checking if python 3.9.2 installed."
+echo "Checking if $destdir exists."
 
 if [ -d "$destdir" ]; then
 
 echo ""
 echo $destdir exists!
+else
+echo ""
+echo $destdir does not exist.  Creating!
+cmd='mkdir -p '$destdir''
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+fi
 
 #cmd='notroot install mitmproxy'
 #if [ $do_echo -eq 1 ]; then echo $cmd; fi
@@ -49,20 +56,21 @@ echo $destdir exists!
 #if [ $do_echo -eq 1 ]; then echo $cmd; fi
 #if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-cmd='pip install pipx'
+#https://tools.hana.ondemand.com/additional/btp-cli-linux-amd64-2.0.0.tar.gz
+
+cmd='curl -L -o '$destdir'/btp http://thedrop.sap-partner-eng.com/files/btp'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-cmd='pip install mitmproxy'
+cmd='echo '"'"'export PATH='$destdir':$PATH'"'"' >> '$rcfile
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-cmd='mitmproxy --version'
+cmd='export PATH='$destdir':$PATH'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-else
-echo ""
-echo $destdir does not exist!
-echo "Install python 3.9.2 before attempting to install mitmproxy!"
-fi
+cmd='btp --version'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
