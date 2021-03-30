@@ -1,8 +1,8 @@
 #!/bin/bash
 do_run=1 # Execute(evaluate) the commands
 #do_run=0 # Don't evaluate any commands
-#do_echo=1 # Echo the commands
-do_echo=0 # Don't echo any commands
+do_echo=1 # Echo the commands
+#do_echo=0 # Don't echo any commands
 #
 # See https://blogs.sap.com/2020/12/10/xtending-business-application-studio-1-of-3/
 #
@@ -30,69 +30,27 @@ fi
 if [ "$#" -ge 2 ]; then
   destdir=$2
 else
-  destdir="/home/user"
+  destdir="/home/user/notroot"
 fi
 
+echo ""
+echo "Checking if NOTROOT installed."
+
+if [ -d "$destdir" ]; then
 
 echo ""
-echo "Installing NOTROOT Version $nrver."
+echo $destdir exists!
 
-echo ""
-echo "Changing to "$destdir
-cmd='cd '$destdir
+cmd='notroot install mitmproxy'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
+#if [ $do_run -eq 1 ]; then eval $cmd; fi
 
-#git clone https://github.com/andrewlunde/notroot.git /home/user/notroot
-#cat /home/user/notroot/add2bashrc.txt >> ~/.bashrc
-#export APT_CONFIG=/home/user/notroot/apt.conf
-#source "$HOME/notroot/bashrc"
-#export PERL5LIB=/home/user/notroot/usr/lib/x86_64-linux-gnu/perl5/5.28:$PERL5LIB
-#/home/user/notroot/prepapt
-
-echo ""
-echo "Cloning notroot "$nrver"."
-cmd='git clone https://github.com/andrewlunde/notroot.git /home/user/notroot'
+cmd='sed -i -e "s/\/usr\/bin\/python3/\/home\/user\/notroot\/usr\/bin\/python3/g" /home/user/notroot/usr/bin/mitmproxy'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
+#if [ $do_run -eq 1 ]; then eval $cmd; fi
 
+else
 echo ""
-echo "Modifying .bashrc"
-cmd='cat /home/user/notroot/add2bashrc.txt >> ~/.bashrc'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-echo ""
-echo "Export APT_CONFIG"
-cmd='export APT_CONFIG=/home/user/notroot/apt.conf'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-echo ""
-echo "Source bashrc"
-cmd='source "$HOME/notroot/bashrc"'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-echo ""
-echo "Export PERL5LIB"
-cmd='export PERL5LIB=/home/user/notroot/usr/lib/x86_64-linux-gnu/perl5/5.28:$PERL5LIB'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-echo ""
-echo "Prepping APT"
-cmd='/home/user/notroot/prepapt'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-
-echo ""
-echo "Get JQ Version"
-cmd='jq -V'
-if [ $do_echo -eq 1 ]; then echo $cmd; fi
-if [ $do_run -eq 1 ]; then eval $cmd; fi
-
-echo ""
-echo "Install of NOTROOT_"$nrver" finished."
-
+echo $destdir does not exist!
+echo "Install NOTROOT before attempting to install mitmproxy!"
+fi
