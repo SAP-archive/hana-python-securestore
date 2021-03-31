@@ -57,6 +57,7 @@ fi
 #if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 #https://tools.hana.ondemand.com/additional/btp-cli-linux-amd64-2.0.0.tar.gz
+#https://tools.hana.ondemand.com/#cloud
 
 cmd='curl -L -o '$destdir'/btp http://thedrop.sap-partner-eng.com/files/btp'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
