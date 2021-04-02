@@ -45,6 +45,12 @@ if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
 
 echo ""
+echo "Creating "$HOME"/go"
+cmd='mkdir -p '$HOME'/go'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+echo ""
 echo "Changing to "$destdir
 cmd='cd '$destdir
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
