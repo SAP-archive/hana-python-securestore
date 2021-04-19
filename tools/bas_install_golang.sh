@@ -18,12 +18,17 @@ if [ "$#" -ge 1 ]; then
     echo "Version 1_12_1 cool."
     gomin="1.12.1"
   else
-    if [ $gover = "1_12_0" ]; then
-      echo "Version 1_12_0 cool."
-      gomin="1.12.1"
+    if [ $gover = "1_13_15" ]; then
+      echo "Version 1_13_15 cool."
+      gomin="1.13.15"
     else
-      echo "Version $gover is not supported, try again."
-      exit 1
+      if [ $gover = "1_16_3" ]; then
+        echo "Version 1_16_3 cool."
+        gomin="1.16.3"
+      else
+        echo "Version $gover is not supported, try again."
+        exit 1
+      fi
     fi
   fi
 fi
