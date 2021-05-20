@@ -98,3 +98,12 @@ if [ $do_run -eq 1 ]; then eval $cmd; fi
 cmd='chmod 700 /home/user/.thetacli/keys/encrypted'
 if [ $do_echo -eq 1 ]; then echo $cmd; fi
 if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='npm install -g solc'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
+cmd='solcjs -V'
+if [ $do_echo -eq 1 ]; then echo $cmd; fi
+if [ $do_run -eq 1 ]; then eval $cmd; fi
+
