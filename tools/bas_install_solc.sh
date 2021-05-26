@@ -14,23 +14,66 @@ rcfile="~/.bashrc"
 
 if [ "$#" -ge 1 ]; then
   solcver=$1
-  if [ $solcver = "0_4_16" ]; then
+
+  case $solcver in
+
+  0_8_4)
+    echo "Version 0_8_4 cool."
+    solcmin="0.8.4"
+    ;;
+
+  0_7_6)
+    echo "Version 0_7_6 cool."
+    solcmin="0.7.6"
+    ;;
+
+  0_6_12)
+    echo "Version 0_6_12 cool."
+    solcmin="0.6.12"
+    ;;
+
+  0_5_17)
+    echo "Version 0_5_17 cool."
+    solcmin="0.5.17"
+    ;;
+
+  0_5_0)
+    echo "Version 0_5_0 cool."
+    solcmin="0.5.0"
+    ;;
+
+  0_4_26)
+    echo "Version 0_4_26 cool."
+    solcmin="0.4.26"
+    ;;
+
+  0_4_16)
     echo "Version 0_4_16 cool."
     solcmin="0.4.16"
-  else
-    if [ $solcver = "0_5_0" ]; then
-      echo "Version 0_5_0 cool."
-      solcmin="0.5.0"
-    else
-      if [ $solcver = "0_4_16" ]; then
-        echo "Version 0_4_16 cool."
-        solcmin="0.4.16"
-      else
-        echo "Version $solcver is not supported, try again."
-        exit 1
-      fi
-    fi
-  fi
+    ;;
+
+  0_3_6)
+    echo "Version 0_3_6 cool."
+    solcmin="0.3.6"
+    ;;
+
+  0_2_2)
+    echo "Version 0_2_2 cool."
+    solcmin="0.2.2"
+    ;;
+
+  0_1_7)
+    echo "Version 0_1_7 cool."
+    solcmin="0.1.7"
+    ;;
+
+  *)
+    echo -n "unknown"
+    echo "Version $solcver is not supported, try again."
+    exit 1
+    ;;
+
+  esac
 fi
 
 if [ "$#" -ge 2 ]; then
