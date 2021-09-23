@@ -1,7 +1,6 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/hana-python-securestore)](https://api.reuse.software/info/github.com/SAP-samples/hana-python-securestore)
 
-# Python example of HANA Secure Store API
-Multi-Target Application Python example of interfacing with the HANA Secure Store API
+# Python example of SAP HANA Secure Store API
 
 ## Description
 
